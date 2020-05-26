@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-26T05:14:21-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>Describe your website here.</subtitle><entry><title type="html">Rxjs</title><link href="http://localhost:4000/rxjs/" rel="alternate" type="text/html" title="Rxjs" /><published>2019-10-08T00:00:00-04:00</published><updated>2019-10-08T00:00:00-04:00</updated><id>http://localhost:4000/rxjs</id><content type="html" xml:base="http://localhost:4000/rxjs/">&lt;h3 id=&quot;essential-concept&quot;&gt;Essential Concept&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Observable: an invokable collection of future values or events&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&quot;&quot; style=&quot;text-align:center;border-collapse:collapse;&quot;&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;Single&lt;/th&gt;
+    &lt;th&gt;Mutiple&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Pull&lt;/td&gt;
+    &lt;td&gt;Function&lt;/td&gt;
+    &lt;td&gt;Iterator&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Push&lt;/td&gt;
+    &lt;td&gt;Promise&lt;/td&gt;
+    &lt;td&gt;Observable&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fromEvent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rxjs'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;throttleTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rxjs/operators'&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Purity: state count is scoped within&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fromEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Flow: event is invoked at most one time per sec&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fromEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;throttleTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Value: change ev to ev.clientX&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fromEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="javascript" /><summary type="html">Essential Concept</summary></entry><entry><title type="html">Creating and Applying Git Patch Files</title><link href="http://localhost:4000/git-patch/" rel="alternate" type="text/html" title="Creating and Applying Git Patch Files" /><published>2019-09-08T00:00:00-04:00</published><updated>2019-09-08T00:00:00-04:00</updated><id>http://localhost:4000/git-patch</id><content type="html" xml:base="http://localhost:4000/git-patch/">&lt;h3 id=&quot;creating-a-patch&quot;&gt;Creating a patch&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git diff &amp;gt; my-patch-file.patch
+# with binary file patch
+git diff --binary &amp;gt; my-patch-file.patch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;applying-a-patch&quot;&gt;Applying a patch&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git apply my-patch-file.patch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span style=&quot;background:#e6d2d2; padding:0 2px&quot;&gt;git apply&lt;/span&gt; command applies patches to the working directory.&lt;/p&gt;</content><author><name></name></author><category term="git" /><summary type="html">Creating a patch</summary></entry><entry><title type="html">DNS</title><link href="http://localhost:4000/dns/" rel="alternate" type="text/html" title="DNS" /><published>2019-08-28T00:00:00-04:00</published><updated>2019-08-28T00:00:00-04:00</updated><id>http://localhost:4000/dns</id><content type="html" xml:base="http://localhost:4000/dns/">&lt;p&gt;DNS(Domain Name System): DNS is a worldwide distributed directory of network information. it stores a wide variety of DNS records.&lt;/p&gt;</content><author><name></name></author><category term="network" /><summary type="html">DNS(Domain Name System): DNS is a worldwide distributed directory of network information. it stores a wide variety of DNS records.</summary></entry><entry><title type="html">Stacking Order</title><link href="http://localhost:4000/stacking-context/" rel="alternate" type="text/html" title="Stacking Order" /><published>2019-07-30T00:00:00-04:00</published><updated>2019-07-30T00:00:00-04:00</updated><id>http://localhost:4000/stacking-context</id><content type="html" xml:base="http://localhost:4000/stacking-context/">&lt;p&gt;When the &lt;strong&gt;z-index&lt;/strong&gt; property is not specified on any element, elements are stacked in the following order (from bottom to top):&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;the background and borders of the root element&lt;/li&gt;
+  &lt;li&gt;Descendant &lt;strong&gt;non-positioned&lt;/strong&gt; blocks, in order of appearance in the HTML&lt;/li&gt;
+  &lt;li&gt;Descendant &lt;strong&gt;positioned&lt;/strong&gt; element, in order of appearance in the HTML&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The stacking context is a three-dimentional conceptualization of HTML elements along imaginary z-axis relative to the user.&lt;/p&gt;</content><author><name></name></author><category term="css" /><summary type="html">When the z-index property is not specified on any element, elements are stacked in the following order (from bottom to top): the background and borders of the root element Descendant non-positioned blocks, in order of appearance in the HTML Descendant positioned element, in order of appearance in the HTML</summary></entry><entry><title type="html">Threejs Building</title><link href="http://localhost:4000/threejs-building/" rel="alternate" type="text/html" title="Threejs Building" /><published>2019-07-25T00:00:00-04:00</published><updated>2019-07-25T00:00:00-04:00</updated><id>http://localhost:4000/threejs-building</id><content type="html" xml:base="http://localhost:4000/threejs-building/">&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echarts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^4.2.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;element-ui&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^2.10.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^2.6.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vuex&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^3.1.1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;iframe src=&quot;http://luyang1026.github.io/threejs-building/web3d/t0.html&quot; width=&quot;640&quot; height=&quot;490&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;</content><author><name></name></author><category term="workpiece" /><category term="threejs" /><summary type="html">&quot;dependencies&quot;: { &quot;echarts&quot;: &quot;^4.2.1&quot;, &quot;element-ui&quot;: &quot;^2.10.1&quot;, &quot;vue&quot;: &quot;^2.6.10&quot;, &quot;vuex&quot;: &quot;^3.1.1&quot; }</summary></entry><entry><title type="html">Interactive Beijing Map</title><link href="http://localhost:4000/interactive-beijing-map/" rel="alternate" type="text/html" title="Interactive Beijing Map" /><published>2019-07-25T00:00:00-04:00</published><updated>2019-07-25T00:00:00-04:00</updated><id>http://localhost:4000/interactive-beijing-map</id><content type="html" xml:base="http://localhost:4000/interactive-beijing-map/">&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echarts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^4.2.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;element-ui&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^2.10.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^2.6.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vuex&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^3.1.1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;iframe src=&quot;http://luyang1026.github.io/reactive-map-beijing/&quot; width=&quot;640&quot; height=&quot;490&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;</content><author><name></name></author><category term="workpiece" /><summary type="html">&quot;dependencies&quot;: { &quot;echarts&quot;: &quot;^4.2.1&quot;, &quot;element-ui&quot;: &quot;^2.10.1&quot;, &quot;vue&quot;: &quot;^2.6.10&quot;, &quot;vuex&quot;: &quot;^3.1.1&quot; }</summary></entry><entry><title type="html">Git Cherry-Pick</title><link href="http://localhost:4000/git-cheery-pick/" rel="alternate" type="text/html" title="Git Cherry-Pick" /><published>2019-07-17T00:00:00-04:00</published><updated>2019-07-17T00:00:00-04:00</updated><id>http://localhost:4000/git-cheery-pick</id><content type="html" xml:base="http://localhost:4000/git-cheery-pick/">&lt;h3 id=&quot;when-you-need-to-make-a-commit-in-tow-branches&quot;&gt;When You Need to Make a Commit in Tow Branches&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A--B--C--D--F  ← master ← HEAD
+      \--E  ← v1-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now commit F with a bugfix must be applied to v1-release branch.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-make-a-commit-in-tow-branches&quot;&gt;How to Make a Commit in Tow Branches&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout v1-release
+git cherry-pick F
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span style=&quot;background:#e6d2d2; padding:0 2px&quot;&gt;cherry-pick&lt;/span&gt; command applies changes made by a specific commit to current branch, creating a new commit.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A--B--C--D--F  ← master ← HEAD
+      \--E--G  ← v1-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Commit G introduces same changes as F.&lt;/p&gt;</content><author><name></name></author><category term="git" /><summary type="html">When You Need to Make a Commit in Tow Branches</summary></entry><entry><title type="html">Hub, Switch &amp;amp; Router</title><link href="http://localhost:4000/hub-switch-router/" rel="alternate" type="text/html" title="Hub, Switch &amp; Router" /><published>2019-07-14T00:00:00-04:00</published><updated>2019-07-14T00:00:00-04:00</updated><id>http://localhost:4000/hub-switch-router</id><content type="html" xml:base="http://localhost:4000/hub-switch-router/">&lt;h3 id=&quot;hub-switch--router&quot;&gt;Hub, Switch &amp;amp; Router&lt;/h3&gt;
+&lt;p&gt;Hub and Switches are used to exchange data within a local network&lt;/p&gt;
+
+&lt;p&gt;Hubs &amp;amp; Switches are used to create network. Routers are used to connect network.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hub: data is copyed to &lt;strong&gt;all&lt;/strong&gt; other ports&lt;/li&gt;
+  &lt;li&gt;Switch: data is only directed to the &lt;strong&gt;intended&lt;/strong&gt; port&lt;/li&gt;
+  &lt;li&gt;Router: routes data from one network to another based on their &lt;strong&gt;IP address&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="network" /><summary type="html">Hub, Switch &amp;amp; Router Hub and Switches are used to exchange data within a local network</summary></entry><entry><title type="html">Firewall</title><link href="http://localhost:4000/firewall/" rel="alternate" type="text/html" title="Firewall" /><published>2019-07-14T00:00:00-04:00</published><updated>2019-07-14T00:00:00-04:00</updated><id>http://localhost:4000/firewall</id><content type="html" xml:base="http://localhost:4000/firewall/">&lt;h3 id=&quot;firewall-rules-can-be-based-on&quot;&gt;Firewall rules can be based on&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IP addresses&lt;/li&gt;
+  &lt;li&gt;Domain names&lt;/li&gt;
+  &lt;li&gt;Protocols&lt;/li&gt;
+  &lt;li&gt;Programs&lt;/li&gt;
+  &lt;li&gt;Ports&lt;/li&gt;
+  &lt;li&gt;Key words&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;firewall-types&quot;&gt;Firewall Types&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Host-based firewall
+    &lt;ul&gt;
+      &lt;li&gt;Software firewall that is installed on a computer.&lt;/li&gt;
+      &lt;li&gt;Protect that computer only&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Network-based firewall
+    &lt;ul&gt;
+      &lt;li&gt;Combination of hardware &amp;amp; software&lt;/li&gt;
+      &lt;li&gt;Place between a private network and the public internet&lt;/li&gt;
+      &lt;li&gt;Protect the entire network&lt;/li&gt;
+      &lt;li&gt;Can be a stand-alone firewall, router built-in firewall, cloud firewall&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="network" /><summary type="html">Firewall rules can be based on</summary></entry><entry><title type="html">DHCP</title><link href="http://localhost:4000/DHCP/" rel="alternate" type="text/html" title="DHCP" /><published>2019-07-14T00:00:00-04:00</published><updated>2019-07-14T00:00:00-04:00</updated><id>http://localhost:4000/DHCP</id><content type="html" xml:base="http://localhost:4000/DHCP/">&lt;h3 id=&quot;dynamic-host-configuration-protocol&quot;&gt;Dynamic Host Configuration Protocol&lt;/h3&gt;
+&lt;p&gt;Every computer on a network has to have an I.P. address.&lt;/p&gt;
+
+&lt;p&gt;there are two ways that a computer can be assigned an I.P. addresss: &lt;strong&gt;&lt;em&gt;static IP&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;dynamic IP&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;static IP: where a user assigns an I.P. address manually.&lt;/li&gt;
+  &lt;li&gt;dynamic IP: where a computer gets an I.P. address from a DHCP server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A DHCP server automatically assigns a computer an:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I.P. adresss&lt;/li&gt;
+  &lt;li&gt;Subnet mask&lt;/li&gt;
+  &lt;li&gt;Default gateway&lt;/li&gt;
+  &lt;li&gt;DNS server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The DHCP server assigns the I.P. address as a lease.&lt;/p&gt;
+
+&lt;p&gt;A lease is the amount of time an I.P. address is assigned to a computer.&lt;/p&gt;
+
+&lt;p&gt;A reservation ensures that a specific computer or device will always be given the same I.P. address. [image]&lt;/p&gt;
+
+&lt;p&gt;DHCP is a service that runs on a server. It also a service that runs on many routers.&lt;/p&gt;</content><author><name></name></author><category term="network" /><summary type="html">Dynamic Host Configuration Protocol Every computer on a network has to have an I.P. address.</summary></entry></feed>
