@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: http://luyang1026.github.io/blog/sitemap.xml
