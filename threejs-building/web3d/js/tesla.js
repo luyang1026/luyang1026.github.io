@@ -1,5 +1,5 @@
 var scene = new THREE.Scene()
-var camera = new THREE.PerspectiveCamera(75, 900/600, 0.1, 6000)
+var camera = new THREE.PerspectiveCamera(75, 800/600, 0.1, 6000)
 let tesla
 camera.position.z = 600;
 // camera.position.x = 5;
@@ -7,7 +7,7 @@ camera.position.y = 100;
 
 
 var render = new THREE.WebGLRenderer({ antialias: true})
-render.setSize(900, 600)
+render.setSize(800, 600)
 render.setClearColor(0xefefef);
 render.shadowMap.enabled = true
 render.shadowMap.type = THREE.PCFSoftShadowMap
