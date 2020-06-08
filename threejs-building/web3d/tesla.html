@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/three.min.js"></script>
+  <script src="./js/GLTFLoader.js"></script>
+  <script src="./js/OrbitControls.js"></script>
+  <style>canvas {margin: 10px auto;display: block;}</style>
+  <style>
+    .content {
+      position: relative;
+      width: 900px;
+      margin: 0 auto;
+    }
+    .colors {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+    }
+    .color-item { cursor: pointer; }
+    .color-item.active .color-svg circle{
+      display: block;
+    }
+    .color-svg circle{ display: none; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div id="canvas"></div>
+    <div class="colors">
+      <div class="color-item active" data-color="white">
+        <svg class="color-svg" height="60" width="60">
+          <image href="./assets/ui_swat_col_ppsw.png" width="75%" height="75%" x="12.5%" y="12.5%"></image>
+          <circle cx="50%" cy="50%" r="45%" stroke="#007fff" stroke-width="4%" fill="white" fill-opacity="0"></circle>
+        </svg>
+      </div>
+      <div class="color-item" data-color="silver">
+        <svg class="color-svg" height="60" width="60">
+          <image href="./assets/ui_swat_col_pmng.png" width="75%" height="75%" x="12.5%" y="12.5%"></image>
+          <circle cx="50%" cy="50%" r="45%" stroke="#007fff" stroke-width="4%" fill="white" fill-opacity="0"></circle>
+        </svg>
+      </div>
+      <div class="color-item" data-color="red">
+        <svg class="color-svg" height="60" width="60">
+          <image href="./assets/ui_swat_col_ppmr.png" width="75%" height="75%" x="12.5%" y="12.5%"></image>
+          <circle cx="50%" cy="50%" r="45%" stroke="#007fff" stroke-width="4%" fill="white" fill-opacity="0"></circle>
+        </svg>
+      </div>
+      <div class="color-item" data-color="blue">
+        <svg class="color-svg" height="60" width="60">
+          <image href="./assets/ui_swat_col_ppsb.png" width="75%" height="75%" x="12.5%" y="12.5%"></image>
+          <circle cx="50%" cy="50%" r="45%" stroke="#007fff" stroke-width="4%" fill="white" fill-opacity="0"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <script src="./js/tesla.js"></script>
+</body>
+</html>
