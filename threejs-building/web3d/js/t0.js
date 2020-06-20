@@ -57,14 +57,16 @@
   }
 
   function init () {
+    var windowWidth = window.innerWidth
+    var windowHeight = window.innerHeight
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0xa0a0a0 );
-  
-    camera = new THREE.PerspectiveCamera( 85, 800 / 500, 0.1, 1000 );
+    
+    camera = new THREE.PerspectiveCamera( 85, windowWidth / windowHeight, 0.1, 1000 );
     camera.position.set(-30, 300, 40 );
   
     renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.setSize( 800*1.2 , 500*1.2 );
+    renderer.setSize( windowWidth , windowHeight );
     document.getElementById('scene').appendChild( renderer.domElement );
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -336,7 +338,12 @@
     // camera.fov = 35
     // camera.lookAt(controls.object.up)
     // camera.updateProjectionMatrix();
-    context.fillText(value, 80, 20)
+    context.clearRect(0, 10, 2000, 16)
+    context.save()
+    context.fillStyle = '#1e2d3f'
+    context.fillRect(0, 10, 2000, 16)
+    context.restore()
+    context.fillText(value, 24, 20)
     // canvasTexture = new THREE.CanvasTexture(
     //   document.querySelector("#text")
     // )

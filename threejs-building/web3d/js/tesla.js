@@ -5,9 +5,10 @@ camera.position.z = 600;
 // camera.position.x = 5;
 camera.position.y = 100;
 
-
+var windowWidth = document.documentElement.clientWidth
+var windowHeight = document.documentElement.clientHeight
 var render = new THREE.WebGLRenderer({ antialias: true})
-render.setSize(800, 600)
+render.setSize(windowWidth, windowHeight)
 render.setClearColor(0xefefef);
 render.shadowMap.enabled = true
 render.shadowMap.type = THREE.PCFSoftShadowMap
